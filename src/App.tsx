@@ -6,6 +6,7 @@ import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminPage from "./pages/admin/AdminPage";
 import RootLayout from "./pages/RootLayout";
+import TicketPurchasePage from "./pages/tickets/purchase/purchasePage";
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
           }
         />
         <Route path="/admin" element={<AdminPage />}>
-          <Route path="admin/dashboard" element={<AdminDashboardPage />} />
-          <Route path="admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
         </Route>
+        <Route path="/tickets/purchase" element={<TicketPurchasePage />} />
       </Routes>
     </BrowserRouter>
   );
