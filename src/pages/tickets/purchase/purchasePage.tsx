@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import TicketPurchaseFlow from "@/components/tickets/TicketPurchaseFlow";
+
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 
@@ -33,7 +34,7 @@ const TicketPurchasePage = () => {
         {/* Add any additional styling or content here for the landing image */}
       </Box>
 
-      <TicketPurchagit seFlow />
+      <TicketPurchaseFlow />
 
       <Footer />
     </Box>
