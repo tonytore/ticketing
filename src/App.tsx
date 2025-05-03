@@ -6,6 +6,7 @@ import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminPage from "./pages/admin/AdminPage";
 import RootLayout from "./pages/RootLayout";
 import TicketPurchasePage from "./pages/tickets/purchase/purchasePage";
+import AdminLayout from "./pages/admin/AdminLayout";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,8 +20,12 @@ function App() {
         },
         {
           path: "admin",
-          element: <AdminPage />,
+          element: <AdminLayout />, // Make sure this is pointing to your AdminLayout component
           children: [
+            {
+              index: true, // This makes AdminPage the default child route for "/"
+              element: <AdminPage />,
+            },
             {
               path: "login",
               element: <AdminLoginPage />,

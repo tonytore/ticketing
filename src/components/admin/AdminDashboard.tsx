@@ -40,6 +40,7 @@ const AdminDashboard = () => {
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    console.log("event from adminDashboard", event);
   };
 
   return (

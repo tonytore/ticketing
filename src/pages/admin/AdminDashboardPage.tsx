@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, CircularProgress } from "@mui/material";
 import AdminDashboard from "@/components/admin/AdminDashboard"; // Adjust path as needed
