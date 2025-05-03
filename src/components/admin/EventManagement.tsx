@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 
 import {
   Box,
   Typography,
   Paper,
-  Grid,
   Button,
   TextField,
   Chip,
@@ -16,6 +15,7 @@ import {
   TableRow,
   IconButton,
   Dialog,
+  Grid,
   DialogActions,
   DialogContent,
   DialogContentText,
@@ -43,7 +43,7 @@ const EventManagement = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState<string>("all");
 
   // Form state
   const [formData, setFormData] = useState({
@@ -104,7 +104,7 @@ const EventManagement = () => {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -113,7 +113,7 @@ const EventManagement = () => {
     });
   };
 
-  const handleSwitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSwitchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setFormData({
       ...formData,
@@ -214,7 +214,7 @@ const EventManagement = () => {
   };
 
   const handleFilterChange = (
-    event: React.ChangeEvent<HTMLInputElement>, // Specify the event type
+    event: React.SyntheticEvent,
     newValue: string
   ) => {
     setFilter(newValue);

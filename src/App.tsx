@@ -1,5 +1,4 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
@@ -9,25 +8,38 @@ import RootLayout from "./pages/RootLayout";
 import TicketPurchasePage from "./pages/tickets/purchase/purchasePage";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <RootLayout>
-              <HomePage />
-            </RootLayout>
-          }
-        />
-        <Route path="/admin" element={<AdminPage />}>
-          <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
-          <Route path="/admin/login" element={<AdminLoginPage />} />
-        </Route>
-        <Route path="/tickets/purchase" element={<TicketPurchasePage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />, // Render RootLayout here to provide the shared layout
+      children: [
+        {
+          index: true, // This makes HomePage the default child route for "/"
+          element: <HomePage />,
+        },
+        {
+          path: "admin",
+          element: <AdminPage />,
+          children: [
+            {
+              path: "login",
+              element: <AdminLoginPage />,
+            },
+            {
+              path: "dashboard",
+              element: <AdminDashboardPage />,
+            },
+          ],
+        },
+        {
+          path: "tickets/purchase",
+          element: <TicketPurchasePage />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

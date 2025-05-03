@@ -16,7 +16,7 @@ import VisitorTypeSelection from "./steps/VisitorTypeSelection";
 import PersonalInformation from "./steps/PersonalInformation";
 import Payment from "./steps/Payment";
 import Confirmation from "./steps/Confirmation";
-import { Currency } from "@/lib/types";
+import { Currency, TicketPurchaseData } from "@/lib/types";
 
 const steps = [
   "Select Ticket Type",
@@ -28,30 +28,33 @@ const steps = [
   "Confirmation",
 ];
 
+const initialPurchaseData: TicketPurchaseData = {
+  ticketType: null,
+  isVIP: false,
+  rulesAgreed: false,
+  visitDate: null,
+  visitTime: "",
+  eventId: null,
+  isLocal: true,
+  numberOfTickets: 1,
+  isGroupTicket: false,
+  personalInfo: {
+    name: "",
+    email: "",
+    phone: "",
+    nationality: "",
+  },
+  subscribeToNewsletter: false,
+  paymentMethod: "",
+  currency: Currency.USD,
+  paymentComplete: false,
+  transactionId: null,
+};
+
 const TicketPurchaseFlow = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [purchaseData, setPurchaseData] = useState({
-    ticketType: null,
-    isVIP: false,
-    rulesAgreed: false,
-    visitDate: null,
-    visitTime: "",
-    eventId: null,
-    isLocal: true,
-    numberOfTickets: 1,
-    isGroupTicket: false,
-    personalInfo: {
-      name: "",
-      email: "",
-      phone: "",
-      nationality: "",
-    },
-    subscribeToNewsletter: false,
-    paymentMethod: "",
-    currency: Currency.USD,
-    paymentComplete: false,
-    transactionId: null,
-  });
+  const [purchaseData, setPurchaseData] =
+    useState<TicketPurchaseData>(initialPurchaseData);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -61,14 +64,14 @@ const TicketPurchaseFlow = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const updatePurchaseData = (newData) => {
+  const updatePurchaseData = (newData: Partial<TicketPurchaseData>) => {
     setPurchaseData((prevData) => ({
       ...prevData,
       ...newData,
     }));
   };
 
-  const getStepContent = (step) => {
+  const getStepContent = (step: number): React.ReactNode => {
     switch (step) {
       case 0:
         return (

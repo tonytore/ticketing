@@ -7,7 +7,7 @@ import PolicyIcon from "@mui/icons-material/Policy";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
-import Image from "next/image";
+
 // // Animation keyframes
 // const fadeIn = keyframes `
 //   from {
@@ -45,7 +45,7 @@ const Footer = () => {
             </Typography>
             <br />
             <Box display="grid" alignItems="center">
-              <Image
+              <img
                 src="/base/logo.png"
                 alt="Logo"
                 width={150}

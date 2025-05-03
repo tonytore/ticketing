@@ -65,6 +65,25 @@ export interface ContactPerson {
   name: string;
   email: string;
   phone: string;
+  nationality?: string;
+}
+
+export interface TicketPurchaseData {
+  ticketType: string | null;
+  isVIP: boolean;
+  rulesAgreed: boolean;
+  visitDate: Date | null;
+  visitTime: string;
+  eventId: string | null;
+  isLocal: boolean;
+  numberOfTickets: number;
+  isGroupTicket: boolean;
+  personalInfo: ContactPerson;
+  subscribeToNewsletter: boolean;
+  paymentMethod: string;
+  currency: Currency;
+  paymentComplete: boolean;
+  transactionId: string | null;
 }
 
 export interface Ticket {
